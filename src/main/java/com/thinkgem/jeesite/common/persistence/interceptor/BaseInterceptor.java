@@ -5,6 +5,9 @@
  */
 package com.thinkgem.jeesite.common.persistence.interceptor;
 
+import java.io.Serializable;
+import java.util.Properties;
+
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.plugin.Interceptor;
@@ -22,9 +25,6 @@ import com.thinkgem.jeesite.common.persistence.dialect.db.PostgreSQLDialect;
 import com.thinkgem.jeesite.common.persistence.dialect.db.SQLServer2005Dialect;
 import com.thinkgem.jeesite.common.persistence.dialect.db.SybaseDialect;
 import com.thinkgem.jeesite.common.utils.Reflections;
-
-import java.io.Serializable;
-import java.util.Properties;
 
 /**
  * Mybatis分页拦截器基类

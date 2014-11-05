@@ -15,6 +15,7 @@ import com.thinkgem.jeesite.common.utils.IdGen;
 
 /**
  * 数据Entity类
+ * 
  * @author ThinkGem
  * @version 2013-05-28
  */
@@ -23,14 +24,14 @@ public abstract class IdEntity<T> extends DataEntity<T> implements Serializable 
 
 	private static final long serialVersionUID = 1L;
 
-	protected String id;		// 编号
-	
+	protected String id; // 编号
+
 	public IdEntity() {
 		super();
 	}
-	
+
 	@PrePersist
-	public void prePersist(){
+	public void prePersist() {
 		super.prePersist();
 		this.id = IdGen.uuid();
 	}
@@ -43,5 +44,5 @@ public abstract class IdEntity<T> extends DataEntity<T> implements Serializable 
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 }
