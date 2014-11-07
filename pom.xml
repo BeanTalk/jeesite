@@ -829,11 +829,47 @@
 	<!-- 开发者信息 -->
 	<developers>
 		<developer>
-			<id>BeanTalk</id>
-			<name>RongLiu</name>
-			<email>From Neusoft</email>
+			<id>rongLiu</id>
+			<name>Rong Liu</name>
+			<email>liurong@neusoft.com</email>
 			<roles>
 				<role>Project Leader</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+		<developer>
+			<id>weiGao</id>
+			<name>wei Gao</name>
+			<email>gaowei@neusoft.com</email>
+			<roles>
+				<role>Dev</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+		<developer>
+			<id>chaozhao</id>
+			<name>chao zhao</name>
+			<email>zhchao@neusoft.com</email>
+			<roles>
+				<role>Dev</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+		<developer>
+			<id>hubinYang</id>
+			<name>hubin yang</name>
+			<email>yanghb@neusoft.com</email>
+			<roles>
+				<role>Dev</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+		<developer>
+			<id>nnShi</id>
+			<name>ning ning Shi</name>
+			<email>shining@163.com</email>
+			<roles>
+				<role>Dev</role>
 			</roles>
 			<timezone>+8</timezone>
 		</developer>

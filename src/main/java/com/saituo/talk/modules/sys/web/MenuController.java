@@ -58,7 +58,7 @@ public class MenuController extends BaseController {
 		List<Menu> sourcelist = systemService.findAllMenu();
 		Menu.sortList(list, sourcelist, "1");
 		model.addAttribute("list", list);
-		return "modules/sys/menuList";
+		return "modules/sys/menu/menuList";
 	}
 
 	@RequiresPermissions("sys:menu:view")
@@ -69,7 +69,7 @@ public class MenuController extends BaseController {
 		}
 		menu.setParent(systemService.getMenu(menu.getParent().getId()));
 		model.addAttribute("menu", menu);
-		return "modules/sys/menuForm";
+		return "modules/sys/menu/menuForm";
 	}
 
 	@RequiresPermissions("sys:menu:edit")
@@ -99,7 +99,7 @@ public class MenuController extends BaseController {
 	@RequiresUser
 	@RequestMapping(value = "tree")
 	public String tree() {
-		return "modules/sys/menuTree";
+		return "modules/sys/menu/menuTree";
 	}
 
 	/**

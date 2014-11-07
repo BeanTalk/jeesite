@@ -68,7 +68,7 @@ public class UserController extends BaseController {
 		Page<User> page = systemService.findUser(new Page<User>(request,
 				response), user);
 		model.addAttribute("page", page);
-		return "modules/sys/userList";
+		return "modules/sys/user/userList";
 	}
 
 	@RequiresPermissions("sys:user:view")
@@ -99,7 +99,7 @@ public class UserController extends BaseController {
 
 		model.addAttribute("user", user);
 		model.addAttribute("allRoles", systemService.findAllRole());
-		return "modules/sys/userForm";
+		return "modules/sys/user/userForm";
 	}
 
 	@RequiresPermissions("sys:user:edit")
@@ -274,7 +274,7 @@ public class UserController extends BaseController {
 			model.addAttribute("message", "保存用户信息成功");
 		}
 		model.addAttribute("user", currentUser);
-		return "modules/sys/userInfo";
+		return "modules/sys/user/userInfo";
 	}
 
 	@RequiresUser
@@ -294,7 +294,7 @@ public class UserController extends BaseController {
 			}
 		}
 		model.addAttribute("user", user);
-		return "modules/sys/userModifyPwd";
+		return "modules/sys/user/userModifyPwd";
 	}
 
 }

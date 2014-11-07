@@ -66,7 +66,7 @@ public class AreaController extends BaseController {
 		List<Area> sourcelist = areaService.findAll();
 		Area.sortList(list, sourcelist, area.getId());
 		model.addAttribute("list", list);
-		return "modules/sys/areaList";
+		return "modules/sys/area/areaList";
 	}
 
 	@RequiresPermissions("sys:area:view")
@@ -77,7 +77,7 @@ public class AreaController extends BaseController {
 		}
 		area.setParent(areaService.get(area.getParent().getId()));
 		model.addAttribute("area", area);
-		return "modules/sys/areaForm";
+		return "modules/sys/area/areaForm";
 	}
 
 	@RequiresPermissions("sys:area:edit")

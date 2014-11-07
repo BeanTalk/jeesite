@@ -53,7 +53,7 @@ public class LoginController extends BaseController{
 		if(user.getId() != null){
 			return "redirect:"+Global.getAdminPath();
 		}
-		return "modules/sys/sysLogin";
+		return "modules/sys/common/sysLogin";
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class LoginController extends BaseController{
 		}
 		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, username);
 		model.addAttribute("isValidateCodeLogin", isValidateCodeLogin(username, true, false));
-		return "modules/sys/sysLogin";
+		return "modules/sys/common/sysLogin";
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class LoginController extends BaseController{
 		isValidateCodeLogin(user.getLoginName(), false, true);
 		// 登录成功后，获取上次登录的当前站点ID
 		UserUtils.putCache("siteId", CookieUtils.getCookie(request, "siteId"));
-		return "modules/sys/sysIndex";
+		return "modules/sys/common/sysIndex";
 	}
 	
 	/**
