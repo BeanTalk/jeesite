@@ -54,14 +54,14 @@ public class DictController extends BaseController {
 		model.addAttribute("typeList", typeList);
         Page<Dict> page = dictService.find(new Page<Dict>(request, response), dict); 
         model.addAttribute("page", page);
-		return "modules/sys/dictList";
+		return "modules/sys/dict/dictList";
 	}
 
 	@RequiresPermissions("sys:dict:view")
 	@RequestMapping(value = "form")
 	public String form(Dict dict, Model model) {
 		model.addAttribute("dict", dict);
-		return "modules/sys/dictForm";
+		return "modules/sys/dict/dictForm";
 	}
 
 	@RequiresPermissions("sys:dict:edit")

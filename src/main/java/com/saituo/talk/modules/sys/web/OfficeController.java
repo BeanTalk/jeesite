@@ -67,7 +67,7 @@ public class OfficeController extends BaseController {
 		List<Office> sourcelist = officeService.findAll();
 		Office.sortList(list, sourcelist, office.getId());
 		model.addAttribute("list", list);
-		return "modules/sys/officeList";
+		return "modules/sys/office/officeList";
 	}
 
 	@RequiresPermissions("sys:office:view")
@@ -82,7 +82,7 @@ public class OfficeController extends BaseController {
 			office.setArea(office.getParent().getArea());
 		}
 		model.addAttribute("office", office);
-		return "modules/sys/officeForm";
+		return "modules/sys/office/officeForm";
 	}
 
 	@RequiresPermissions("sys:office:edit")

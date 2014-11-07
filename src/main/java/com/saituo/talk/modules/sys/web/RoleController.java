@@ -65,7 +65,7 @@ public class RoleController extends BaseController {
 	public String list(Role role, Model model) {
 		List<Role> list = systemService.findAllRole();
 		model.addAttribute("list", list);
-		return "modules/sys/roleList";
+		return "modules/sys/role/roleList";
 	}
 
 	@RequiresPermissions("sys:role:view")
@@ -78,7 +78,7 @@ public class RoleController extends BaseController {
 		model.addAttribute("menuList", systemService.findAllMenu());
 //		model.addAttribute("categoryList", categoryService.findByUser(false, null));
 		model.addAttribute("officeList", officeService.findAll());
-		return "modules/sys/roleForm";
+		return "modules/sys/role/roleForm";
 	}
 	
 	@RequiresPermissions("sys:role:edit")
@@ -115,7 +115,7 @@ public class RoleController extends BaseController {
 	public String assign(Role role, Model model) {
 		List<User> users = role.getUserList();
 		model.addAttribute("users", users);
-		return "modules/sys/roleAssign";
+		return "modules/sys/role/roleAssign";
 	}
 	
 	@RequiresPermissions("sys:role:view")
@@ -124,7 +124,7 @@ public class RoleController extends BaseController {
 		model.addAttribute("role", role);
 		model.addAttribute("selectIds", role.getUserIds());
 		model.addAttribute("officeList", officeService.findAll());
-		return "modules/sys/selectUserToRole";
+		return "modules/sys/role/selectUserToRole";
 	}
 	
 	@RequiresPermissions("sys:role:view")
