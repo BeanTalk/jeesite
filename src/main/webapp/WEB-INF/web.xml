@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	
-	<display-name>JeeSite</display-name>
+	<display-name>Saituo</display-name>
   
 	<!-- 激活Tomcat的defaultServlet来处理静态文件 -->
 	<servlet-mapping>
@@ -26,6 +26,10 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.css</url-pattern>
 	</servlet-mapping>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
   
 	<!-- 加载Spring配置文件 -->
 	<context-param>
@@ -34,13 +38,12 @@
 		classpath*:/spring-context*.xml
 		</param-value>
 	</context-param>
+	
 	<context-param>
 		<param-name>spring.profiles.default</param-name>
 		<param-value>production</param-value>
 	</context-param>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+	
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -57,8 +60,7 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<!-- 必须配合使用 Spring 的 HibernateDaoSupport 来进行开发,dao层的类都要继承于 HibernateDaoSupport 
-		从中由 Spring 来控制 Hibernate 的 Session 在请求来的时候开启，走的时候关闭，保证了我们访问数据对象时的稳定性 -->
+	
 	<filter>
 		<filter-name>openSessionInViewFilter</filter-name>
 		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
@@ -81,21 +83,6 @@
 		<filter-name>shiroFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-  
-	<!-- Ehcache 页面缓存，仅缓存首页和html为后缀的页面 （需要时取消注释）
-		  <filter>  
-			<filter-name>PageCacheFilter</filter-name>  
-				<filter-class>com.saituo.talk.common.filter.PageCachingFilter  
-			</filter-class>
-		  </filter>
-		  <filter-mapping>  
-			<filter-name>PageCacheFilter</filter-name>
-			<url-pattern>/</url-pattern>
-		  </filter-mapping>
-		  <filter-mapping>
-			<filter-name>PageCacheFilter</filter-name>
-			<url-pattern>*.html</url-pattern>
-		  </filter-mapping>-->
   
 	<!-- SiteMesh -->
 	<filter>
@@ -120,16 +107,6 @@
 	<servlet-mapping>
 		<servlet-name>springServlet</servlet-name>
 		<url-pattern>/</url-pattern>
-	</servlet-mapping>
-  
-	<!-- DruidStatView -->
-	<servlet>
-		<servlet-name>DruidStatView</servlet-name>
-		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>DruidStatView</servlet-name>
-		<url-pattern>/druid/*</url-pattern>
 	</servlet-mapping>
   
 	<!-- CKFinder -->
@@ -202,6 +179,7 @@
 		<exception-type>java.lang.Throwable</exception-type>
 		<location>/WEB-INF/views/error/500.jsp</location>
 	</error-page>
+	
 	<error-page>
 		<error-code>500</error-code>
 		<location>/WEB-INF/views/error/500.jsp</location>
