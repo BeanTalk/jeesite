@@ -22,3 +22,5 @@ bin/src/main/webapp/WEB-INF/views/modules/sys/roleForm.jsp
 
 *.log
 /bin/
+
+logs/jeesite.log.2014-11-07

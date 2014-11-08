@@ -749,7 +749,7 @@
 								<!-- mssql <property name="dbunit.datatype" value="org.dbunit.ext.mssql.MsSqlDataTypeFactory" 
 									/> -->
 
-								<property file="src/main/resources/jeesite.properties" />
+								<property file="src/main/resources/conf.properties" />
 								<sql driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}"
 									password="${jdbc.password}" onerror="continue"
 									encoding="${project.build.sourceEncoding}">

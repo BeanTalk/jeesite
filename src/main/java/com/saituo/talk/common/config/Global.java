@@ -26,7 +26,7 @@ public class Global {
 	 * 属性文件加载对象
 	 */
 	private static PropertiesLoader propertiesLoader = new PropertiesLoader(
-			"jeesite.properties");
+			"conf.properties");
 
 	/**
 	 * 获取配置
