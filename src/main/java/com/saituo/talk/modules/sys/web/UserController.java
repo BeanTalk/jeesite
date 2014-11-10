@@ -108,7 +108,6 @@ public class UserController extends BaseController {
 			HttpServletRequest request, Model model,
 			RedirectAttributes redirectAttributes) {
 
-		// 修正引用赋值问题，不知道为何，Company和Office引用的一个实例地址，修改了一个，另外一个跟着修改。
 		user.setCompany(new Office(request.getParameter("company.id")));
 		user.setOffice(new Office(request.getParameter("office.id")));
 
@@ -133,7 +132,6 @@ public class UserController extends BaseController {
 			}
 		}
 		user.setRoleList(roleList);
-
 		// 保存用户信息
 		systemService.saveUser(user);
 
@@ -253,6 +251,18 @@ public class UserController extends BaseController {
 			return "true";
 		} else if (loginName != null
 				&& systemService.getUserByLoginName(loginName) == null) {
+			return "true";
+		}
+		return "false";
+	}
+
+	@ResponseBody
+	@RequiresPermissions("sys:user:edit")
+	@RequestMapping("checkLoginEmail")
+	public String checkLoginEmail(String oldEmail, String email) {
+		if (email != null && email.equals(oldEmail)) {
+			return "true";
+		} else if (email != null && systemService.getUserByEmail(email) == null) {
 			return "true";
 		}
 		return "false";

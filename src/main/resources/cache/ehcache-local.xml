@@ -10,16 +10,29 @@
 	
 	<cache name="sysCache" maxElementsInMemory="100" eternal="true" overflowToDisk="true"/>
 	
-	<cache name="cmsCache" maxElementsInMemory="100" eternal="true" overflowToDisk="true"/>
-	    
-    <cache name="shiro-activeSessionCache" maxElementsInMemory="100" overflowToDisk="true"
-           eternal="true" timeToLiveSeconds="0" timeToIdleSeconds="0"
-           diskPersistent="true" diskExpiryThreadIntervalSeconds="600"/>
+	<cache name="shiro-activeSessionCache" maxElementsInMemory="100" overflowToDisk="true"
+		eternal="true" timeToLiveSeconds="0" timeToIdleSeconds="0"
+		diskPersistent="true" diskExpiryThreadIntervalSeconds="600"/>
 
-    <cache name="org.apache.shiro.realm.text.PropertiesRealm-0-accounts"
-           maxElementsInMemory="100" eternal="true" overflowToDisk="true"/>
+	<cache name="org.apache.shiro.realm.text.PropertiesRealm-0-accounts"
+		maxElementsInMemory="100" eternal="true" overflowToDisk="true"/>
     
-    <cache name="SimplePageCachingFilter" maxElementsInMemory="100" eternal="false" overflowToDisk="true"
-    	timeToIdleSeconds="120" timeToLiveSeconds="120" memoryStoreEvictionPolicy="LFU"/>
+	<cache name="SimplePageCachingFilter" maxElementsInMemory="100" eternal="false" overflowToDisk="true"
+		timeToIdleSeconds="120" timeToLiveSeconds="120" memoryStoreEvictionPolicy="LFU"/>
+    	
+	<!-- shiro授权的缓存名称 -->
+	<cache name="shiroAuthorizationCache" maxElementsInMemory="10000" timeToLiveSeconds="1200">
+		<!-- <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=false"/> -->
+	</cache>
+
+	<!-- shiro认证的缓存名称 -->
+	<cache name="shiroAuthenticationCache" maxElementsInMemory="10000" timeToLiveSeconds="1200" memoryStoreEvictionPolicy="LRU">
+		<!-- <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=false"/> -->
+	</cache>
+
+	<!-- shiro的活动session缓存名称 -->
+	<cache name="shiroActiveSessionCache" maxElementsInMemory="10000" timeToLiveSeconds="1200" memoryStoreEvictionPolicy="LRU">
+		<!-- <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=false"/> -->
+	</cache>
     	
 </ehcache>

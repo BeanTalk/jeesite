@@ -9,10 +9,12 @@
 			$("#loginName").focus();
 			$("#inputForm").validate({
 				rules: {
-					loginName: {remote: "${ctx}/sys/user/checkLoginName?oldLoginName=" + encodeURIComponent('${user.loginName}')}
+					loginName: {remote: "${ctx}/sys/user/checkLoginName?oldLoginName=" + encodeURIComponent('${user.loginName}')},
+					email: {remote: "${ctx}/sys/user/checkLoginEmail?oldEmail=" + encodeURIComponent('${user.email}')}
 				},
 				messages: {
 					loginName: {remote: "用户登录名已存在"},
+					email: {remote: "该邮件已存在"},
 					confirmNewPassword: {equalTo: "输入与上面相同的密码"}
 				}
 			});
@@ -52,7 +54,7 @@
 		<div class="control-group">
 			<label class="control-label" for="no">工号:</label>
 			<div class="controls">
-				<form:input path="no" htmlEscape="false" maxlength="50" class="required"/>
+				<form:input path="no" htmlEscape="false" maxlength="50"/>
 			</div>
 		</div>
 		<div class="control-group">
@@ -77,7 +79,8 @@
 		<div class="control-group">
 			<label class="control-label" for="email">邮箱:</label>
 			<div class="controls">
-				<form:input path="email" htmlEscape="false" maxlength="100" class="email"/>
+				<input id="oldEmail" name="oldEmail" type="hidden" value="${user.email}">
+				<form:input path="email" htmlEscape="false" maxlength="100" class="required email" />
 			</div>
 		</div>
 		<div class="control-group">
@@ -102,8 +105,15 @@
 			<label class="control-label" for="userType">用户类型:</label>
 			<div class="controls">
 				<form:select path="userType">
-					<form:option value="" label="请选择"/>
 					<form:options items="${fns:getDictList('sys_user_type')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
+				</form:select>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for=userCatagory>用户种类:</label>
+			<div class="controls">
+				<form:select path="userCatagory">
+					<form:options items="${fns:getDictList('sys_user_catagory')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
 				</form:select>
 			</div>
 		</div>

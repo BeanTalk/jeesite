@@ -114,6 +114,14 @@ public class SystemService extends BaseService {
 	public User getUserByLoginName(String loginName) {
 		return userDao.findByLoginName(loginName);
 	}
+	
+	public User getUserByEmail(String email) {
+		return userDao.findByEmail(email);
+	}
+
+	public User getUserByUsernameOrUserNoOrEmail(String loginName) {
+		return userDao.findByLoginNameOrUserNoOrEmail(loginName);
+	}
 
 	@Transactional(readOnly = false)
 	public void saveUser(User user) {

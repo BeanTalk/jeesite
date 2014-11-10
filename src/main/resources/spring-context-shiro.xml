@@ -31,6 +31,23 @@
 		</property>
 	</bean>
 	
+	<!-- 自定义shiro的realm身份验证 -->
+	<bean id="systemAuthorizingRealm" class="com.saituo.talk.modules.sys.security.SystemAuthorizingRealm">
+		<property name="name" value="sysAuthentication" />
+		<property name="credentialsMatcher">
+			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+				<property name="hashAlgorithmName" value="Sha1" />
+				<property name="hashIterations" value="1024" />
+			</bean>
+		</property>
+		<!-- 授权缓存名称 -->
+		<property name="authorizationCacheName" value="shiroAuthorizationCache" />
+		<!-- 启用认证缓存，当用户登录一次后将不在查询数据库来获取用户信息，直接在从缓存获取 -->
+		<property name="authenticationCachingEnabled" value="true" />
+		<!-- 认证缓存名称 -->
+		<property name="authenticationCacheName" value="shiroAuthenticationCache" />
+	</bean>
+	
 	<!-- 定义 Shiro 主要业务对象 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<!-- <property name="sessionManager" ref="sessionManager" /> -->

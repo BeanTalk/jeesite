@@ -40,6 +40,14 @@
 			</div>
 		</div>
 		<div class="control-group">
+			<label class="control-label" for="module">所属模块:</label>
+			<div class="controls">
+				<form:select path="module">
+					<form:options items="${fns:getDictList('module')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
+				</form:select>
+			</div>
+		</div>
+		<div class="control-group">
 			<label class="control-label" for="target">目标:</label>
 			<div class="controls">
 				<form:input path="target" htmlEscape="false" maxlength="10"/>
@@ -61,12 +69,6 @@
 			<label class="control-label" for="isShow">可见:</label>
 			<div class="controls">
 				<form:radiobuttons path="isShow" items="${fns:getDictList('show_hide')}" itemLabel="label" itemValue="value" htmlEscape="false" class="required"/>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="isActiviti">同步到工作流:</label>
-			<div class="controls">
-				<form:radiobuttons path="isActiviti" items="${fns:getDictList('yes_no')}" itemLabel="label" itemValue="value" htmlEscape="false" class="required"/>
 			</div>
 		</div>
 		<div class="control-group">
