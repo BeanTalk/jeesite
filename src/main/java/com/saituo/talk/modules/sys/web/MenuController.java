@@ -74,8 +74,7 @@ public class MenuController extends BaseController {
 
 	@RequiresPermissions("sys:menu:edit")
 	@RequestMapping(value = "save")
-	public String save(Menu menu, Model model,
-			RedirectAttributes redirectAttributes) {
+	public String save(Menu menu, Model model, RedirectAttributes redirectAttributes) {
 		if (!beanValidator(model, menu)) {
 			return form(menu, model);
 		}
@@ -107,8 +106,7 @@ public class MenuController extends BaseController {
 	 */
 	@RequiresPermissions("sys:menu:edit")
 	@RequestMapping(value = "updateSort")
-	public String updateSort(String[] ids, Integer[] sorts,
-			RedirectAttributes redirectAttributes) {
+	public String updateSort(String[] ids, Integer[] sorts, RedirectAttributes redirectAttributes) {
 		int len = ids.length;
 		Menu[] menus = new Menu[len];
 		for (int i = 0; i < len; i++) {
@@ -123,22 +121,17 @@ public class MenuController extends BaseController {
 	@RequiresUser
 	@ResponseBody
 	@RequestMapping(value = "treeData")
-	public List<Map<String, Object>> treeData(
-			@RequestParam(required = false) Long extId,
-			HttpServletResponse response) {
+	public List<Map<String, Object>> treeData(@RequestParam(required = false) Long extId, HttpServletResponse response) {
 		response.setContentType("application/json; charset=UTF-8");
 		List<Map<String, Object>> mapList = Lists.newArrayList();
 		List<Menu> list = systemService.findAllMenu();
 		for (int i = 0; i < list.size(); i++) {
 			Menu e = list.get(i);
 			if (extId == null
-					|| (extId != null && !extId.equals(e.getId()) && e
-							.getParentIds().indexOf("," + extId + ",") == -1)) {
+					|| (extId != null && !extId.equals(e.getId()) && e.getParentIds().indexOf("," + extId + ",") == -1)) {
 				Map<String, Object> map = Maps.newHashMap();
 				map.put("id", e.getId());
-				map.put("pId", e.getParent() != null
-						? e.getParent().getId()
-						: 0);
+				map.put("pId", e.getParent() != null ? e.getParent().getId() : 0);
 				map.put("name", e.getName());
 				mapList.add(map);
 			}
